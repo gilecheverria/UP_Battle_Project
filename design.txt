@@ -1,0 +1,112 @@
+Project for an RPG battle game
+
+Descriptions of the classes.
+Properties are listed with '-', and methods with '>'
+Inheritance is shown with indentation levels
+
+Classes:
+
+    Character
+    - HP
+    - current_HP
+    - MP
+    - current_MP
+    - speed
+    - class
+    - level
+    - attack
+    - defense
+    - magic
+    - attack %
+    - defense %
+    - magic %
+    - critical %
+    - status
+    > attack
+    > defend
+    > heal
+    > special action
+    > receive damage
+
+        Hero
+        - experience
+        - name
+        - AP    // Ability points
+        - inventory
+        - gold
+        > escape
+        > use item
+        > equip item
+        > level up
+
+            Caster
+
+            Tank
+
+            Healer
+
+        Monster
+        - behaviour
+        - level range
+        - treasures
+        - gold
+        - drop rate
+        > call reinforcements
+
+            Boss
+            - name
+            > level specific actions (dialogue)
+
+    Inventory
+    - collection of items
+    > select item
+    > remove item
+    > add item
+    > check items
+
+    Item
+    - type
+
+        Weapon
+        - attack
+        - attack %
+        > get data
+
+        Armor
+        - defense
+        - defense %
+        > get data
+
+        Expendable
+        - effect
+        > apply
+
+    Party
+    - array of characters
+    - size
+    > initialize array
+    > destructor
+
+    Battle
+    - party of monsters
+    - party of heroes
+    - timing
+    - menu
+    > game loop
+    > query action
+    > check status
+
+    Game
+    - battles
+    - check points
+    - shop
+    - menu
+    > save state
+    > load state
+
+    Shop
+    - inventory
+    - gold
+    - menu
+    > buy
+    > sell
