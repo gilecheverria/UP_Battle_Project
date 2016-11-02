@@ -11,8 +11,11 @@
 
 #include <iostream>
 
+// Declare an enumeration type for the possible states a character can be in
+enum status_t { NORMAL, DEAD, POISONED, PARALIZED };
+
 class Character {
-	private:
+	protected:      // These properties can be used by classes inheriting from me
     	int HP;
     	int current_HP;
     	int MP;
@@ -27,21 +30,22 @@ class Character {
     	double defense_percent;
     	double magic_percent;
     	double critical_percent;
-    	int status;
+    	status_t status;
 
 	public:
 		// Constructor methods
-		Character() {}
-		Character(int _HP, int _MP, int _speed, int _character_class, int _attack, int _defense, int _magic,
-			double _attack_percent, double _defense_percent, double _magic_percent, double _critical_percent);
+		Character(int _HP=100, int _MP=20, int _speed=5, int _character_class=0,
+                int _attack=1, int _defense=0, int _magic=0, double _attack_percent=0.5,
+                double _defense_percent=0.2, double _magic_percent=0.2,
+                double _critical_percent=0.1);
 
 		// Utility methods
 		void print();
-		/*
     	int performAttack();
+    	void receiveDamage(int base_damage);
+    	void healDamage(int base_recovery);
+		/*
     	bool defend();
-    	bool heal();
     	bool specialAction();
 		*/
-    	void receive_damage(int base_damage);
 };
