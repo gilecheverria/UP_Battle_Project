@@ -9,8 +9,8 @@
 */
 
 #include <iostream>
-#include "Character.h"
-#include "Hero.h"
+#include "Character.hpp"
+#include "Hero.hpp"
 
 int main()
 {

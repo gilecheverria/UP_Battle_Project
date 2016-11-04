@@ -1,4 +1,4 @@
-#include "Hero.h"
+#include "Hero.hpp"
 
 Hero::Hero(std::string _name, int _HP, int _MP, int _speed, int _character_class,
         int _attack, int _defense, int _magic, double _attack_percent,

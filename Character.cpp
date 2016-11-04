@@ -1,4 +1,4 @@
-#include "Character.h"
+#include "Character.hpp"
 
 // Constructor with initial data for the instance
 Character::Character(int _HP, int _MP, int _speed, int _character_class,

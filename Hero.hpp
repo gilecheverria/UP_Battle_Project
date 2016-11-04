@@ -9,7 +9,7 @@
 // Make sure the file can only be included one time
 #pragma once
 
-#include "Character.h"
+#include "Character.hpp"
 
 class Hero : public Character {
     private:

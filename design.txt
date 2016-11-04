@@ -39,12 +39,6 @@ Classes:
         > equip item
         > level up
 
-            Caster
-
-            Tank
-
-            Healer
-
         Monster
         - behaviour
         - level range
