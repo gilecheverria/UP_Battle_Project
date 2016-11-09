@@ -40,6 +40,7 @@ Classes:
         > level up
 
         Monster
+        - type
         - behaviour
         - level range
         - treasures

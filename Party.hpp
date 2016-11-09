@@ -24,4 +24,5 @@ class Party {
         // Access methods
         Character getMember(int i);
         void setMember(int i, Character _character);
+        int getSize() { return size; }
 };
