@@ -31,4 +31,9 @@ class Hero : public Character {
         void equipItem();
         void levelUP();
         */
+        // Access methods
+        std::string getName() { return name; }
+        // Helper methods
+        void print();
+        void print(int line);
 };

@@ -10,6 +10,9 @@
 #pragma once
 
 #include <iostream>
+#include <iomanip>
+
+#define PRINT_LINES 4
 
 // Declare an enumeration type for the possible states a character can be in
 enum status_t { NORMAL, DEAD, POISONED, PARALIZED };
@@ -39,13 +42,16 @@ class Character {
                 double _defense_percent=0.2, double _magic_percent=0.2,
                 double _critical_percent=0.1);
 
-		// Utility methods
-		void print();
     	int performAttack();
     	void receiveDamage(int base_damage);
     	void healDamage(int base_recovery);
+    	void defend();
 		/*
-    	bool defend();
     	bool specialAction();
 		*/
+        // Access methods
+        status_t getStatus() { return status; }
+		// Utility methods
+		void print();
+		void print(int line);
 };

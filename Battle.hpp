@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include "Hero.hpp"
+#include "Monster.hpp"
 #include "Party.hpp"
 
 // Create constants for the state of the battle
@@ -21,11 +22,15 @@ class Battle {
         Party hero_party;
         Party enemy_party;
         battle_state_t state;
+        int num_heros;
+        int num_enemies;
 
         // Methods
         void playerAction(int index);
         void enemyAction(int index);
         int selectEnemyTarget();
+        int selectHeroTarget();
+        void updateBattleState();
     public:
         Battle(Party & _hero_party, Party & _enemy_party);
         void initialize(Party & _hero_party, Party & _enemy_party);

@@ -9,27 +9,32 @@
 */
 
 #include <iostream>
-#include "Character.hpp"
-#include "Hero.hpp"
+#include "Battle.hpp"
 
 int main()
 {
-    // Call the default constructor of the class
-    Hero goku;
-    // Call a constructor that receives initial data
+    // Constructors for the heros
+    Hero goku ("Goku", 270, 40, 15, 1, 4, 2, 4, 0.60, 0.35, 0.25, 0.12);
     Hero vegeta ("Vegeta", 200, 50, 10, 1, 5, 3, 2, 0.70, 0.30, 0.20, 0.10);
-    Character cell   (400, 60, 15, 1, 8, 6, 1, 0.60, 0.35, 0.25, 0.20);
+    // Constructors for the monsters
+    Monster troll_1 (TROLL);
+    Monster troll_2 (TROLL);
+    Monster giant_1 (GIANT);
 
-    std::cout << "Goku data:\n";
-    goku.print();
+    // Create both parties
+    Party the_heros(2, HERO);
+    Party the_monsters(3);
+    
+    // Fill the parties with the characters
+    the_heros.setMember(0, &goku);
+    the_heros.setMember(1, &vegeta);
+    the_monsters.setMember(0, &troll_1);
+    the_monsters.setMember(1, &troll_2);
+    the_monsters.setMember(2, &giant_1);
 
-    std::cout << "Vegeta data:\n";
-    vegeta.print();
-
-    int damage = cell.performAttack();
-    std::cout << "Vegeta takes " << damage << " damage from Cell:\n";
-    vegeta.receiveDamage(damage);
-    vegeta.print();
+    // Get them into a fight
+    Battle the_battle(the_heros, the_monsters);
+    the_battle.battleLoop();
 
     return 0;
 }

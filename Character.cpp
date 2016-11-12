@@ -5,7 +5,6 @@ Character::Character(int _HP, int _MP, int _speed, int _character_class,
         int _attack, int _defense, int _magic, double _attack_percent,
         double _defense_percent, double _magic_percent, double _critical_percent)
 {
-    std::cout << "CONSTRUCTOR FOR CHARACTER" << std::endl;
     HP = _HP;
     current_HP = _HP;
     MP = _MP;
@@ -30,6 +29,25 @@ void Character::print()
     std::cout << "HP: " << current_HP << " / " << HP << std::endl;
     std::cout << "MP: " << current_MP << " / " << MP << std::endl;
     std::cout << "Status: " << status << std::endl;
+}
+
+void Character::print(int line)
+{
+    switch (line)
+    {
+        case 1:
+            std::cout << "HP: " << std::setw(4) << current_HP << " / " << std::setw(4) << HP;
+            break;
+        case 2:
+            std::cout << "MP: " << std::setw(4) << current_MP << " / " << std::setw(4) << MP;
+            break;
+        case 3:
+            std::cout << "Status: " << std::setw(7) << status;
+            break;
+        default:
+            // Don't do anything
+            break;
+    }
 }
 
 // Compute the amount of damage produced by this character
@@ -66,4 +84,9 @@ void Character::healDamage(int base_recovery)
         if (current_HP > HP)
             current_HP = HP;
     }
+}
+
+void Character::defend()
+{
+
 }

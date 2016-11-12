@@ -30,3 +30,25 @@ action_t Monster::selectAction()
     // if the percents are correctly filled this should never happen
     return ATTACK;
 }
+
+void Monster::print()
+{
+    std::cout << "=== Type: " << getName() << " ===" << std::endl;
+    // Call the 'print' method of the parent class
+    Character::print();
+}
+
+void Monster::print(int line)
+{
+    if (line == 0)
+        std::cout << "== " << std::setw(9) << getName() << " ==";
+    else
+        Character::print(line);
+}
+
+std::string Monster::getName()
+{
+    std::string text_names[] = { "Goblin", "Troll", "Giant", "Dragon" };
+
+    return text_names[type];
+}
