@@ -23,6 +23,59 @@ Character::Character(int _HP, int _MP, int _speed, int _character_class,
     status = NORMAL;
 }
 
+// Fill the statistics for the character with user input
+void Character::inputData()
+{
+    // Get the max Hit Points
+    HP = validatePositiveInt("max HP");
+    current_HP = HP;
+    // Get the max Magic Points
+    MP = validatePositiveInt("max MP");
+    current_MP = MP;
+    // Get the speed
+    speed = validatePositiveInt("speed");
+    //character_class = _character_class;
+    attack = validatePositiveInt("attack");
+    defense = validatePositiveInt("defense");
+    magic = validatePositiveInt("magic");
+    attack_percent = validatePercent("attack percent");
+    defense_percent = validatePercent("defense percent");
+    magic_percent = validatePercent("magic percent");
+    critical_percent = validatePercent("critical percent");
+}
+
+// Method to keep asking for a positive integer value
+// Receives the prompt string to show the user
+int Character::validatePositiveInt(std::string value_name)
+{
+    int value = 0;
+    while (value < 1)
+    {
+        std::cout << "Enter " << value_name << " (integer) : ";
+        std::cin >> value;
+
+        if (value < 1)
+            std::cout << "Can't be a negative value. Try again\n";
+    }
+    return value; 
+}
+
+// Method to keep asking for a percent value in the range of 0 to 1
+// Receives the prompt string to show the user
+float Character::validatePercent(std::string value_name)
+{
+    float value = -1;
+    while (value < 0 || value > 1)
+    {
+        std::cout << "Enter " << value_name << " (float) : ";
+        std::cin >> value;
+
+        if (value < 1)
+            std::cout << "Can't only be decimal number between 0 and 1. Try again\n";
+    }
+    return value; 
+}
+
 // Method to print the data for this character
 void Character::print()
 {
@@ -31,6 +84,7 @@ void Character::print()
     std::cout << "Status: " << status << std::endl;
 }
 
+// Print character stats line by line
 void Character::print(int line)
 {
     switch (line)
@@ -65,7 +119,9 @@ int Character::performAttack()
 //  depends on a base damage received, and the defense stats of the character
 void Character::receiveDamage(int base_damage)
 {
-    current_HP -= (base_damage - defense);
+    // Do not allow negative damage. The std::max function will return
+    //  the highest value from 0 or the damage minus the defense
+    current_HP -= std::max( (base_damage - defense), 0 );
     if (current_HP <= 0)
     {
         current_HP = 0;

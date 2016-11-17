@@ -35,6 +35,10 @@ class Character {
     	double critical_percent;
     	status_t status;
 
+        // Methods that can only be used by child classes
+        int validatePositiveInt(std::string value_name);
+        float validatePercent(std::string value_name);
+
 	public:
 		// Constructor methods
 		Character(int _HP=100, int _MP=20, int _speed=5, int _character_class=0,
@@ -52,6 +56,7 @@ class Character {
         // Access methods
         status_t getStatus() { return status; }
 		// Utility methods
+        void inputData();
 		void print();
 		void print(int line);
 };

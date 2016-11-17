@@ -1,2 +1,3 @@
 #Files not to be included in the project
 .fuse_hidden*
+.*.swp

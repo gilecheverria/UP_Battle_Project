@@ -8,9 +8,9 @@ CXXFLAGS = -std=c++11 -Wall -g
 #LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # List of the objects to compile
-OBJECTS = Character.o Hero.o Monster.o Party.o Battle.o test_battle.o
+OBJECTS = Character.o Hero.o Monster.o Party.o Battle.o Randomizer.o test_battle.o
 # List of header files that should be treated as dependencies
-DEPENDS = Character.hpp Hero.hpp Monster.hpp Party.hpp Battle.hpp
+DEPENDS = Character.hpp Hero.hpp Monster.hpp Party.hpp Battle.hpp Randomizer.hpp FileIOMonster.hpp
 
 # Variables with rule names
 BATTLE = battle

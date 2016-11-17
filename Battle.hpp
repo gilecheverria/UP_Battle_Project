@@ -9,6 +9,7 @@
 #pragma once
 
 #include <iostream>
+#include "Randomizer.hpp"
 #include "Hero.hpp"
 #include "Monster.hpp"
 #include "Party.hpp"

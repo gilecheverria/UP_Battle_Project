@@ -11,6 +11,8 @@
 // Constructor
 Battle::Battle(Party & _hero_party, Party & _enemy_party)
 {
+    // Start the random seed
+    Randomizer::init();
     // Call the method to set the battle parameters
     initialize(_hero_party, _enemy_party);
 }
@@ -132,12 +134,15 @@ void Battle::enemyAction(int index)
             target = selectHeroTarget();
             // Apply the damate
             hero_party.getMember(target)->receiveDamage(damage);
+            std::cout << the_enemy->getName() << " attacks hero " << target << " dealing " << damage << " damage\n";
             break;
         case DEFEND:
             the_enemy->defend();
+            std::cout << the_enemy->getName() << " defends\n";
             break;
         case HEAL:
             the_enemy->healDamage(30);
+            std::cout << the_enemy->getName() << " heals\n";
             break;
         default:
             std::cout << "The enemy does not know what to do and stands still\n";
