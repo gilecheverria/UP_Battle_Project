@@ -23,7 +23,7 @@ class Battle {
         Party hero_party;
         Party enemy_party;
         battle_state_t state;
-        int num_heros;
+        int num_heroes;
         int num_enemies;
 
         // Methods

@@ -70,7 +70,7 @@ float Character::validatePercent(std::string value_name)
         std::cout << "Enter " << value_name << " (float) : ";
         std::cin >> value;
 
-        if (value < 1)
+        if (value < 0 || value > 1)
             std::cout << "Can't only be decimal number between 0 and 1. Try again\n";
     }
     return value; 

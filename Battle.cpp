@@ -23,7 +23,7 @@ void Battle::initialize(Party & _hero_party, Party & _enemy_party)
     hero_party = _hero_party;
     enemy_party = _enemy_party;
 
-    num_heros = hero_party.getSize();
+    num_heroes = hero_party.getSize();
     num_enemies = enemy_party.getSize();
 
     state = FIGHTING;
@@ -43,7 +43,7 @@ void Battle::battleLoop()
         enemy_party.print();
 
         // Select the actions for the heroes
-        for (int i=0; i<num_heros; i++)
+        for (int i=0; i<num_heroes; i++)
         {
             playerAction(i);
         }
@@ -52,6 +52,9 @@ void Battle::battleLoop()
         {
             enemyAction(i);
         }
+
+        // Check if any of the parties has been defeated
+        updateBattleState();
     }
 
     if (state == HERO_WON)
@@ -74,6 +77,10 @@ void Battle::playerAction(int index)
     // Get a pointer to the hero that will act
     // Cast it to the correct Class pointer
     Hero * the_hero = static_cast<Hero*> (hero_party.getMember(index));
+
+    // Dead characters take no actions
+    if (the_hero->getStatus() == DEAD)
+        return;
 
     while (state == FIGHTING && option != 'a' && option != 'd' && option != 'h' && option != 'r')
     {
@@ -121,6 +128,10 @@ void Battle::enemyAction(int index)
     // Get a pointer to the monster that will act
     // Cast it to the correct Class pointer
     Monster * the_enemy = static_cast<Monster*> (enemy_party.getMember(index));
+
+    // Dead characters take no actions
+    if (the_enemy->getStatus() == DEAD)
+        return;
 
     // Get the action taken by the monster using its percentages
     action = the_enemy->selectAction();
@@ -175,7 +186,7 @@ int Battle::selectEnemyTarget()
 int Battle::selectHeroTarget()
 {
     // Randomly select one of the heroes
-    int target = rand() % num_heros;
+    int target = rand() % num_heroes;
 
     return target;
 }
@@ -200,7 +211,7 @@ void Battle::updateBattleState()
 
     alive = false;
     // Check if there are heroes alive
-    for (int i=0; i<num_heros; i++)
+    for (int i=0; i<num_heroes; i++)
     {
         if (hero_party.getMember(i)->getStatus() != DEAD)
             alive = true;
