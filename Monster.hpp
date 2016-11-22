@@ -29,6 +29,7 @@ class Monster : public Character {
         int validateMonsterType();
 
 	public:
+        Monster() {}
 		Monster(monster_t _type);
 		action_t selectAction();
         // Access methods

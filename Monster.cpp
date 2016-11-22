@@ -37,12 +37,20 @@ action_t Monster::selectAction()
 // Fill the data for a monster with input from the user
 void Monster::inputData()
 {
+    std::cout << "== Monster creation module ==\n";
+
     // Ask for a correct monster type
     type = (monster_t)validateMonsterType();
 
-    action_percent[ATTACK] = 50;
-    action_percent[DEFEND] = 40;
-    action_percent[HEAL] = 10;
+    // Ask for the behaviour percents of the monster
+    std::cout << "Enter the following percentages as integers between 0 and 100\n";
+    std::cout << "It is up to you to make the percentages add up to 100\n";
+    std::cout << "Attack percent: ";
+    std::cin >> action_percent[ATTACK];
+    std::cout << "Defend percent: ";
+    std::cin >> action_percent[DEFEND];
+    std::cout << "Heal percent: ";
+    std::cin >> action_percent[HEAL];
 
     // Call the input data method from the parent class
     Character::inputData();
