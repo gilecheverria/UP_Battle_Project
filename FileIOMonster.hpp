@@ -41,12 +41,14 @@ void FileIOMonster::readData(Monster & the_monster, monster_t type, std::string 
 {
     FILE * file_ptr = nullptr;
     file_ptr = openAndCheck(file_name, "ab");
-    // Loop over the file looking for the monster of the type specified
+    // Loop over the file reading all the monsters
     while (fread(&the_monster, sizeof (Monster), 1, file_ptr) == 1)
     {
+        /*
         // Stop the search when the type has been found
         if (the_monster.getType() == type)
             break;
+            */
     }
     fclose(file_ptr);
 }

@@ -26,6 +26,9 @@ int main()
 
 void createMonsters()
 {
+    FileIOTemplate<Monster> monsterWriter;
+    FileIOTemplate<Hero> heroWriter;
+
     Monster dummy (GOBLIN);
     FileIOMonster::writeNewData(dummy, "monter_db.bin");
 }
